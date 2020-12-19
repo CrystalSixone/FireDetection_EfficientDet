@@ -1,0 +1,17 @@
+训练需要修改的地方:
+  (1)datasets,文件夹下包括/annotations,/train,/val,/test(optional)
+  (2)projects, <project_name>:请保持与datasets中文件夹对应的名字, <num_gpus>:使用的gpu个数, <obj_list>: 分类名称
+  (3)train.py, 修改保存的model名字
+
+python train.py -c 2 -p fire2020 --batch_size 8 --lr 1e-5 --num_epochs 2 --load_weights weights/efficientdet-d2.pth
+python train.py -c 0 -p fire --batch_size 8 --lr 1e-5 --num_epochs 2 --load_weights weights/efficientdet-d0.pth
+nohup python train.py -c 0 -p fire --batch_size 16 --lr 1e-5 --num_epochs 200 --load_weights weights/efficientdet-d0.pth >fire.out 2>&1 &
+
+conda activate tree
+nohup python train.py -c 0 -p smoke --batch_size 16 --lr 1e-5 --num_epochs 200 --load_weights weights/efficientdet-d0.pth >smoke.out 2>&1 &
+
+## 使用coco_eval.py来检测AP:
+修改coco_eval.py 中的 def _eval(), 
+`coco_eval.params.catIds = 1`
+如果是多目标：
+`coco_eval.params.catIds = [1,2,3,4]`
