@@ -4,16 +4,15 @@
 
 ### 1. 爬虫
 
-      1. 爬虫工具+浏览器：slenium+webdriver+chrome浏览器
-
-      2. 安装chrome浏览器：
+1. 爬虫工具+浏览器：slenium+webdriver+chrome浏览器
+2. 安装chrome浏览器：
 
 ```
 	 1. wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	 2. sudo dpkg -i google-chrome-stable_current_amd64.deb
 ```
 
-      3. 安装chrome-driver：
+3. 安装chrome-driver：
 
 ```
           1. LATEST=$(wget -q -O - http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
@@ -24,8 +23,8 @@
           6.  sudo ln -sf /usr/local/share/chromedriver /usr/bin/chromedriver
 ```
 
-    4. 安装selenium：`pip install selenium`
-    5. 爬虫具体程序参见**test_baidu.py**
+4. 安装selenium：`pip install selenium`
+5. 爬虫具体程序参见**test_baidu.py**
 
 ### 2. 数据清理+重命名
 
@@ -53,6 +52,9 @@ python3 labelImg.py # 打开labelImg
 
 5. 若需要对标注后的图片和xml标注文件进行批量重命名，合并到同一文件夹/JPEGImage和/Annotations，请使用`DatasetProcess/ImgRename.py def folders_rename()`.
 
+### 5.数据增强
+参考链接：https://github.com/maozezhong/CV_ToolBox
+具体代码详见`/CV_ToolBox/DataAugForObjectDetection/DataAugmentForObejctDetection.py`
 ### 4. 转化为COCO格式
 
 1. 若使用LabelImg（.xml）进行图片标注，请参考`DatasetProcess/61/VocToCoco.py`
